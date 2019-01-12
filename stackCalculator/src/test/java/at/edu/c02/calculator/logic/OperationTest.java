@@ -17,10 +17,10 @@ public class OperationTest {
 		MathOperation add = new Add();
 		
 		//execute
-		double result = add.calculate(2, 2);
+		double result = add.calculate(3, 4);
 		
 		//verify
-		assertEquals(4, result, 0.0001);
+		assertEquals(7, result, 0.0001);
 	}
 
 
