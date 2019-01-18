@@ -1,7 +1,7 @@
 package at.edu.c02.calculator;
 
 
-public interface Calculator {
+public interface ICalculator {
 
 	public enum Operation {
 		add, sub, mul, div,mod
@@ -11,7 +11,7 @@ public interface Calculator {
 	
 	double pop() throws CalculatorException;
 	
-	double perform(Operation op) throws CalculatorException;
+	double calc(Operation op) throws CalculatorException;
 	
 	void clear(); 
 }

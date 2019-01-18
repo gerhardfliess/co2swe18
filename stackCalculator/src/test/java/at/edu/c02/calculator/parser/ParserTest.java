@@ -6,8 +6,8 @@ import static org.mockito.Mockito.*;
 import org.mockito.Mockito;
 import org.junit.Test;
 
-import at.edu.c02.calculator.Calculator;
-import at.edu.c02.calculator.Calculator.Operation;
+import at.edu.c02.calculator.ICalculator;
+import at.edu.c02.calculator.ICalculator.Operation;
 
 public class ParserTest {
 
@@ -19,7 +19,7 @@ public class ParserTest {
 	@Test(expected = FileNotFoundException.class)
 	public void testParserInvalidFile() throws Exception {
 
-		Calculator cal = Mockito.mock(Calculator.class);
+		ICalculator cal = Mockito.mock(ICalculator.class);
 
 		Parser parser = new Parser(cal);
 		parser.parse(new File("invalid"));
@@ -28,14 +28,14 @@ public class ParserTest {
 	@Test
 	public void testParserTest01Xml() throws Exception {
 
-		Calculator cal = mock(Calculator.class);
+		ICalculator cal = mock(ICalculator.class);
 
 		Parser parser = new Parser(cal);
 		parser.parse(new File("src/test/resources/test01.xml"));
 
 		Mockito.verify(cal).push(1.0);
 		verify(cal).push(2.0);
-		verify(cal).perform(Operation.add);
+		verify(cal).calc(Operation.add);
 
 		verifyNoMoreInteractions(cal);
 	}
@@ -43,14 +43,14 @@ public class ParserTest {
 	@Test
 	public void testParserTest02Xml() throws Exception {
 
-		Calculator cal = mock(Calculator.class);
+		ICalculator cal = mock(ICalculator.class);
 
 		Parser parser = new Parser(cal);
 		parser.parse(new File("src/test/resources/test01.xml"));
 
 		Mockito.verify(cal).push(1.0);
 		verify(cal).push(2.0);
-		verify(cal).perform(Operation.add);
+		verify(cal).calc(Operation.add);
 
 		verifyNoMoreInteractions(cal);
 	}
@@ -58,14 +58,14 @@ public class ParserTest {
 	@Test
 	public void testParserTest04Xml() throws Exception {
 
-		Calculator cal = mock(Calculator.class);
+		ICalculator cal = mock(ICalculator.class);
 
 		Parser parser = new Parser(cal);
 		parser.parse(new File("src/test/resources/test04.xml"));
 
 		Mockito.verify(cal).push(11.0);
 		verify(cal).push(5.0);
-		verify(cal).perform(Operation.mod);
+		verify(cal).calc(Operation.mod);
 
 		verifyNoMoreInteractions(cal);
 	}

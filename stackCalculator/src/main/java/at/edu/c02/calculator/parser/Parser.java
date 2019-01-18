@@ -8,15 +8,15 @@ import javax.xml.namespace.QName;
 import javax.xml.stream.*;
 import javax.xml.stream.events.*;
 
-import at.edu.c02.calculator.Calculator;
+import at.edu.c02.calculator.ICalculator;
 import at.edu.c02.calculator.CalculatorException;
-import at.edu.c02.calculator.Calculator.Operation;
+import at.edu.c02.calculator.ICalculator.Operation;
 
 public class Parser {
 
-	private Calculator calc_;
+	private ICalculator calc_;
 
-	public Parser(Calculator cal) {
+	public Parser(ICalculator cal) {
 		if (cal == null)
 			throw new IllegalArgumentException("Calculator not set");
 		calc_ = cal;
@@ -44,7 +44,7 @@ public class Parser {
 				calc_.pop();
 			} else if ("operation".equals(e.asStartElement().getName()
 					.getLocalPart())) {
-				result = calc_.perform(readOperation(value));
+				result = calc_.calc(readOperation(value));
 			}
 		}
 

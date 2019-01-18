@@ -2,13 +2,13 @@ package at.edu.c02.calculator.logic;
 
 import java.util.Stack;
 
-import at.edu.c02.calculator.Calculator;
+import at.edu.c02.calculator.ICalculator;
 import at.edu.c02.calculator.CalculatorException;
 import at.edu.c02.calculator.MathOperation;
 import at.edu.c02.calculator.OperationFactory;
 import at.edu.c02.calculator.logic.operations.DefaultOperationFactory;
 
-public class CalculatorImpl implements Calculator {
+public class CalculatorImpl implements ICalculator {
 
 	private Stack<Double> stack_ = new Stack<Double>();
 
@@ -19,7 +19,7 @@ public class CalculatorImpl implements Calculator {
 	}
 
 	@Override
-	public double perform(Operation op) throws CalculatorException {
+	public double calc(Operation op) throws CalculatorException {
 
 		double b = pop();
 		double a = pop();
