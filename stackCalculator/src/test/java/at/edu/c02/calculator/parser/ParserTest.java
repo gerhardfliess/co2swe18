@@ -1,6 +1,5 @@
 package at.edu.c02.calculator.parser;
 
-
 import java.io.File;
 import java.io.FileNotFoundException;
 import static org.mockito.Mockito.*;
@@ -20,7 +19,6 @@ public class ParserTest {
 	@Test(expected = FileNotFoundException.class)
 	public void testParserInvalidFile() throws Exception {
 
-		
 		Calculator cal = Mockito.mock(Calculator.class);
 
 		Parser parser = new Parser(cal);
@@ -34,15 +32,29 @@ public class ParserTest {
 
 		Parser parser = new Parser(cal);
 		parser.parse(new File("src/test/resources/test01.xml"));
-		
+
 		Mockito.verify(cal).push(1.0);
 		verify(cal).push(2.0);
 		verify(cal).perform(Operation.add);
 
 		verifyNoMoreInteractions(cal);
 	}
-	
-	
+
+	@Test
+	public void testParserTest02Xml() throws Exception {
+
+		Calculator cal = mock(Calculator.class);
+
+		Parser parser = new Parser(cal);
+		parser.parse(new File("src/test/resources/test01.xml"));
+
+		Mockito.verify(cal).push(1.0);
+		verify(cal).push(3.0);
+		verify(cal).perform(Operation.add);
+
+		verifyNoMoreInteractions(cal);
+	}
+
 	@Test
 	public void testParserTest04Xml() throws Exception {
 
@@ -50,12 +62,12 @@ public class ParserTest {
 
 		Parser parser = new Parser(cal);
 		parser.parse(new File("src/test/resources/test04.xml"));
-		
+
 		Mockito.verify(cal).push(11.0);
 		verify(cal).push(5.0);
 		verify(cal).perform(Operation.mod);
 
 		verifyNoMoreInteractions(cal);
 	}
-	
+
 }
