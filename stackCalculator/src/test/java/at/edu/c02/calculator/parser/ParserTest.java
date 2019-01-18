@@ -49,7 +49,7 @@ public class ParserTest {
 		parser.parse(new File("src/test/resources/test01.xml"));
 
 		Mockito.verify(cal).push(1.0);
-		verify(cal).push(3.0);
+		verify(cal).push(2.0);
 		verify(cal).perform(Operation.add);
 
 		verifyNoMoreInteractions(cal);
